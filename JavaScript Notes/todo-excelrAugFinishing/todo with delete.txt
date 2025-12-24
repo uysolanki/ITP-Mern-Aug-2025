@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .show-list{
+            display: grid;
+            grid-template-columns:150px 150px 150px ;
+            column-gap: 20px;
+            align-items: center;
+        }
+
+        #add-button{
+            background-color: green;
+            font-size: 16px;
+            color:white;
+            border: none;
+            margin-top: 10px;
+            margin-left: 10px;
+            padding: 10px;
+            border-radius: 3px;
+            cursor: pointer;
+            font-family: 'Arial';
+            font-weight: bolder;
+            letter-spacing: 2px;
+        }
+
+        .delete-button{
+            background-color: red;
+            font-size: 16px;
+            color:white;
+            border: none;
+            margin-top: 10px;
+            margin-left: 10px;
+            padding: 10px;
+            border-radius: 3px;
+            cursor: pointer;
+            font-family: 'Arial';
+            font-weight: bolder;
+            letter-spacing: 2px;
+        }
+    </style>
+</head>
+<body>
+    <input type="text" id="input-text"> 
+    <input type="date" id="input-date"> 
+    <button id="add-button">ADD</button>
+    <div class="show-list"></div>
+    <script>  
+        let addButton=document.querySelector('#add-button').addEventListener('click', addToList)
+        let showList=document.querySelector('.show-list')
+        let todoListArray=[{todoTask:'task1',todoTaskDate:'2025-09-29'},{todoTask:'task2',todoTaskDate:'2025-09-29'}]
+        displayTodoList()
+        function displayTodoList()
+        {
+            let todoListString=""
+            todoListArray.forEach(
+                (todoItem)=>{
+                      todoListString= todoListString + `<p> ${todoItem.todoTask} </p> <p> ${todoItem.todoTaskDate}</p> <button class='delete-button'> Delete </button> `
+                }
+            )
+            showList.innerHTML=todoListString
+
+             let deleteButtons=document.querySelectorAll('.delete-button')
+            console.log(deleteButtons)
+
+        deleteButtons.forEach(
+            (singleDeleteButton,index)=>{
+                        singleDeleteButton.addEventListener('click',()=>{
+                            todoListArray.splice(index,1)
+                            console.log(todoListArray)
+                            displayTodoList()
+                        })
+            }
+        )
+        }
+
+
+        function addToList()
+        {
+           
+            let inputTextElement=document.querySelector('#input-text') 
+            let inputDateElement=document.querySelector('#input-date') 
+            let todoTask=inputTextElement.value;     //task3               
+            let todoTaskDate=inputDateElement.value; //29-sept-2025
+
+            console.log(todoTask)
+            console.log(todoTaskDate)
+            let todoObject={todoTask,todoTaskDate}  //{todoTask:task3 ,todoTaskDate:29-sept-2025}
+            
+            let booleanResult=checkForDuplicateTask(todoObject)
+            if(todoTask=="" || todoTaskDate=="")
+            alert('Both fields are compulsory')
+            else if(!booleanResult)
+            {
+            todoListArray.push(todoObject)
+            inputTextElement.value=""
+            inputTextElement.focus()
+            }
+            else
+            {
+                alert ('Item Allready existing')
+                return
+            }
+            console.log( todoListArray)
+            displayTodoList()
+        }
+
+        function checkForDuplicateTask(todoObject)
+        {
+                for(let i=0;i<todoListArray.length;i++)
+                {
+                    if(JSON.stringify(todoListArray[i])===JSON.stringify(todoObject))
+                    return true;
+                }
+                return false;
+        }
+
+        // function deleteTodoItem(index)
+        // {
+        //     todoListArray.splice(index,1)
+        //     console.log(todoListArray)
+        //    // displayTodoList()
+        // }
+    </script>
+</body>
+</html>
