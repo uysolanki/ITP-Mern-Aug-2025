@@ -261,3 +261,5 @@ let allCategories1=[...new Set(products.map(
 )),'All']
 
 console.log(allCategories1)
+
+
