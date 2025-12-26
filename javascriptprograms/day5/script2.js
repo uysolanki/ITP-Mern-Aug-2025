@@ -27,9 +27,12 @@ let s1={
     'font-family': 'Courier New, Courier, monospace',
     'color':'white'
 }
- Object.assign(deleteButton.style,s1)
+Object.assign(deleteButton.style,s1)
 liElement.appendChild(deleteButton)
 
+deleteButton.onclick=function(){
+    liElement.remove()
+}
 let olElment=document.getElementById("one")
 olElment.appendChild(liElement)
 textBox.value=""
