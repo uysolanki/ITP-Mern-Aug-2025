@@ -7,4 +7,9 @@ const paraElement=document.querySelector("#one")
 
 
  console.log(paraElement.children[0]);              //only the elements
- 
+
+
+
+ console.log(paraElement.firstChild.nodeType)       //3
+
+ console.log(paraElement.firstElementChild.nodeType)  //1
