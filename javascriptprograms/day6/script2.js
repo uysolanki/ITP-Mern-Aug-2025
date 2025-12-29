@@ -13,3 +13,7 @@ const paraElement=document.querySelector("#one")
  console.log(paraElement.firstChild.nodeType)       //3
 
  console.log(paraElement.firstElementChild.nodeType)  //1
+
+
+ const idAttribute=paraElement.getAttributeNode("id")
+console.log(idAttribute.nodeType)                   //2

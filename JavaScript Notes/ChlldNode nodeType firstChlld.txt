@@ -1,0 +1,134 @@
+Text inside HTML is treated as a Text Node, not a string.
+to read that text we use ".nodeValue"
+
+<li id="one">Buy Milk<button>Delete</button></li>															   Type
+												← first child (TEXT NODE)					Node.TEXT_NODE (3)
+												← second child (ELEMENT NODE)				Node.ELEMENT_NODE (1)
+																							Node.attributes   (2)
+
+Read attributes
+const liElement=document.getElementById("one")
+const attrNode = liElement.getAttributeNode("id");
+console.log(attrNode.nodeType)   //2
+console.log(attrNode)           //id="one"
+
+console.log(liElement.innerText);  					//Buy Milk Delete
+console.log(liElement.firstChild.nodeValue);		//Buy Milk
+
+How to access childs in JavaScript
+
+
+Option 1 : Using childNodes (includes text nodes)
+
+liElement.childNodes[0] // Text node ("Buy Milk")
+liElement.childNodes[1] // <button>Delete</button>
+
+liElement.childNodes[0].nodeType // 3
+liElement.childNodes[1].nodeType // 1
+
+
+
+disadvantage : 
+<li>
+  Buy Milk
+  <button>Delete</button>
+</li>
+
+liElement.childNodes[0] // Text node ("\n")
+liElement.childNodes[1] // Text node ("Buy Milk")
+liElement.childNodes[2] // Text node ("\n")
+liElement.childNodes[3] // <button>Delete</button>
+liElement.childNodes[4] // Text node ("\n")
+
+
+
+Option 1 : Using children (ELEMENTs only)
+liElement.children[0] // <button>Delete</button>
+
+
+
+
+
+<li>Buy Milk<button>Delete</button></li>     
+// liElement.firstChild							-- text ("Buy Milk")
+
+order changed
+<li><button>Delete</button>Buy Milk</li>    
+// liElement.firstChild							-- button
+
+
+<li>									
+  Buy Milk
+  <button>Delete</button>
+</li>
+
+// liElement.firstChild							 -- text ("\n")
+// liElement.firstElementChild					 -- button
+
+
+BEST PRACTICE (Access elements only)
+liElement.querySelector("button")
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Create & Remove</title>
+</head>
+<body>
+
+    <input id="task" placeholder="Enter task" />
+    <button onclick="addTask()">Add Task</button>
+
+    <ul id="tasks"></ul>
+
+    <script>
+    function addTask() {
+        const taskInput = document.getElementById("task");
+        const taskText = taskInput.value.trim();
+
+        //prevent empty input
+        if (taskText === "") {
+            alert("Please enter a task");
+            return;
+        }
+
+        const tasksList = document.getElementById("tasks");
+        const existingTasks = tasksList.getElementsByTagName("li");
+
+        // check duplicates
+        for (let li of existingTasks) {
+            if (li.firstChild.nodeValue === taskText) {
+                alert("Task already exists!");
+                taskInput.value = "";
+                return;
+            }
+        }
+
+        // create li
+        const li = document.createElement("li");
+        li.innerText = taskText;
+
+        // delete button
+        const btn = document.createElement("button");
+        btn.innerText = "Delete";
+
+        li.appendChild(btn);
+        tasksList.appendChild(li);
+
+        // clear input
+        taskInput.value = "";
+
+        // delete logic
+        btn.onclick = function () {
+            li.remove();
+        };
+    }
+</script>
+
+
+</body>
+</html>
