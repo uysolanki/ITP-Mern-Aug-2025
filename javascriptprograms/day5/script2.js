@@ -3,6 +3,7 @@ function showText()
 
 let textBox=document.getElementById("text1")  //refer Textbox
 let textBoxData=textBox.value.trim();         // data
+let olElment=document.getElementById("one")   //unorderedList Element 
 if(textBoxData.length==0)
 {
     alert("Please enter a value")
@@ -10,6 +11,19 @@ if(textBoxData.length==0)
     textBox.focus()
     return
 }
+
+const myTasks=olElment.getElementsByTagName("li")
+for(let task of myTasks )
+{
+    if(task.firstChild.nodeValue===textBoxData)
+    {
+        alert("Data Allready Exists")
+        textBox.value=""
+        textBox.focus()
+        return
+    }
+}
+
 let liElement=document.createElement("li");   //<li></li>
 liElement.innerText = textBoxData;                   //<li>Audi</li>
 
@@ -33,7 +47,8 @@ liElement.appendChild(deleteButton)
 deleteButton.onclick=function(){
     liElement.remove()
 }
-let olElment=document.getElementById("one")
+
+
 olElment.appendChild(liElement)
 textBox.value=""
 textBox.focus()
