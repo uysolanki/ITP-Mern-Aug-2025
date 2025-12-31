@@ -40,6 +40,7 @@ function f2()
         alert(number)
     }
 
+    button1.removeEventListener("click",f2)
 
 
 
@@ -50,10 +51,11 @@ button3.addEventListener("click",()=>alert("Rohit"))
 button3.addEventListener("click",()=>alert("Sharma"))
 
 
-// button3.addEventListener("click",()=>display("Virat"))
-// button3.addEventListener("click",()=>display("Kohli"))
+button3.addEventListener("click",()=>display("Virat"))
+button3.addEventListener("click",()=>display("Kohli"))
 
-// function display(name)
-// {
-// alert(name)
-// }
+function display(name)
+{
+alert(name)
+}
+
