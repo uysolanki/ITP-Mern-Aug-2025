@@ -7,14 +7,21 @@
     <script src="script2.js" defer></script>
     <style>
         ul{
+            position: absolute;
             display: none;
+            margin: 0;
+            padding: 6px 0;
             list-style: none;
+            background: #fff;
+            border: 1px solid #ccc;
+            min-width: 160px;
+            box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+            z-index: 1000;
         }
         ul li{
             padding: 10px;
             background-color: yellow;
-            display: flex;
-           flex-direction: column;
+           
         }
 
         ul li:hover{
