@@ -19,14 +19,22 @@
 
 
 
+// let inputTextBox=document.querySelector('#text1')
+// inputTextBox.addEventListener("keyup",display)
+// function display(event)
+// {
+// if(event.key==='Enter')
+// {
+//     let inputTextBox=document.querySelector('#text1')
+//     let data=inputTextBox.value;
+//     console.log(data)
+// }
+// }
+
+
 let inputTextBox=document.querySelector('#text1')
-inputTextBox.addEventListener("keyup",display)
-function display(event)
-{
-if(event.key==='Enter')
-{
-    let inputTextBox=document.querySelector('#text1')
-    let data=inputTextBox.value;
-    console.log(data)
-}
-}
+inputTextBox.addEventListener("input", () => {
+    console.log(inputTextBox.value);
+  });
+
+  
