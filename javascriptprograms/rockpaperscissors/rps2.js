@@ -11,8 +11,6 @@ resetButton.addEventListener("click", resetScore)
     let lose=0;
     let tie=0;
 
-    let score= JSON.parse(localStorage.getItem("mernrspscore")) || {win,lose,tie}
-
 function playGame(playerMove)
 {
     const computerMove=generateComputerMove1()
@@ -51,15 +49,13 @@ function playGame(playerMove)
     
     switch(result)
     {
-        case "Win" : score.win++; break;
-        case "Lose" : score.lose++; break;
-        case "Tie" : score.tie++; 
+        case "Win" : win++; break;
+        case "Lose" : lose++; break;
+        case "Tie" : tie++; 
     }
     console.log(`Player Move ${playerMove}  Computer Move ${computerMove}`)
     console.log(`Result ${result}`)
-    console.log(`Scoreboard Win ${score.win}  Lose ${score.lose}  Tie ${score.tie}`)
-
-    localStorage.setItem("mernrspscore", JSON.stringify(score))
+    console.log(`Scoreboard Win ${win}  Lose ${lose}  Tie ${tie}`)
 }
 function generateComputerMove()
 {
@@ -100,7 +96,9 @@ function generateComputerMove2()
 
 function resetScore()
 {
-  localStorage.removeItem("mernrspscore")
+  win=0;
+  lose=0;
+  tie=0; 
   console.clear()
   console.log(`Scoreboard Win ${win}  Lose ${lose}  Tie ${tie}`)
 }
