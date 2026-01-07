@@ -27,3 +27,24 @@ function generateComputerMove()
          return "Scissors"
     }
 }
+
+
+function generateComputerMove1()
+{
+    const moves=["Rock","Paper","Scissors"]
+    const randomIndex=Math.floor(Math.random()*moves.length)
+    return moves[randomIndex]
+}
+
+
+function generateComputerMove2()
+{
+   
+   const randomIndex=Math.floor(Math.random()*moves.length)
+   switch(randomIndex)
+   {
+    case 0 : return "Rock"; break;
+    case 1 : return "Paper"; break;
+    case 2 : return "Scissors"; 
+   }
+}
