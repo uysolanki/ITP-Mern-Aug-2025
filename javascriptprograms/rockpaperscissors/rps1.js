@@ -9,8 +9,40 @@ scissorsButton.addEventListener("click", ()=>playGame("Scissors"))
 
 function playGame(playerMove)
 {
-    const computerMove=generateComputerMove()
+    const computerMove=generateComputerMove1()
+    
+    let result="";
+    switch(playerMove)
+    {
+        case "Rock" :
+                        switch(computerMove)
+                        {
+                            case "Rock" : result = "Tie"; break;
+                            case "Paper" : result = "Lose"; break;
+                            case "Scissors" : result = "Win"; break;
+                        }
+                        break;
+        case "Paper" :
+                        switch(computerMove)
+                        {
+                            case "Rock" : result = "Win"; break;
+                            case "Paper" : result = "Tie"; break;
+                            case "Scissors" : result = "Lose"; break;
+                        }
+                        break;
+
+        case "Scissors":
+                        switch(computerMove)
+                        {
+                            case "Rock" : result = "Lose"; break;
+                            case "Paper" : result = "Win"; break;
+                            case "Scissors" : result = "Tie"; break;
+                        }
+                        break;
+                      
+    }
     console.log(`Player Move ${playerMove}  Computer Move ${computerMove}`)
+    console.log(`Result ${result}`)
 }
 function generateComputerMove()
 {
