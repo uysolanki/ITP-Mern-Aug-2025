@@ -104,3 +104,11 @@ function resetScore()
   console.clear()
   console.log(`Scoreboard Win ${win}  Lose ${lose}  Tie ${tie}`)
 }
+
+function featureTest()
+{
+  console.log("New Feature added")
+}
+//comment 2
+//comment 3
+//comment 4

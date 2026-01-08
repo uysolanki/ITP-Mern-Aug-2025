@@ -102,3 +102,9 @@ function resetScore()
   console.clear()
   console.log(`Scoreboard Win ${win}  Lose ${lose}  Tie ${tie}`)
 }
+
+
+function test2()
+{
+    console.log("feature test2")
+}
