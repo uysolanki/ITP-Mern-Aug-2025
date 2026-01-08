@@ -2,6 +2,7 @@ let rockButton=document.querySelector('#rock-btn')
 let paperButton=document.querySelector('#paper-btn')
 let scissorsButton=document.querySelector('#scissors-btn')
 let resetButton=document.querySelector('#reset-btn')
+let autoPlayButton=document.querySelector('#autoplay-btn')
 
 let movesPara=document.querySelector('#moves')
 let resultPara=document.querySelector('#result')
@@ -11,10 +12,13 @@ rockButton.addEventListener("click", ()=>playGame("Rock"))
 paperButton.addEventListener("click", ()=>playGame("Paper"))
 scissorsButton.addEventListener("click", ()=>playGame("Scissors"))
 resetButton.addEventListener("click", resetScore)
+autoPlayButton.addEventListener("click", autoPlayMode)
+    
     let win=0;
     let lose=0;
     let tie=0;
-
+    
+let score= JSON.parse(localStorage.getItem("mernrspscore")) || {win,lose,tie}
 function playGame(playerMove)
 {
     const computerMove=generateComputerMove1()
@@ -63,6 +67,7 @@ function playGame(playerMove)
     movesPara.innerHTML=`Player Move <img src="../images/${playerMove}-emoji.png"/>  Computer Move <img src="../images/${computerMove}-emoji.png"/>`
     resultPara.innerHTML=`Result ${result}`
     scoreboardPara.innerHTML=`Scoreboard Win ${win}  Lose ${lose}  Tie ${tie}`
+    localStorage.setItem("mernrspscore", JSON.stringify(score))
 }
 function generateComputerMove()
 {
@@ -108,10 +113,32 @@ function resetScore()
   tie=0; 
   console.clear()
   console.log(`Scoreboard Win ${win}  Lose ${lose}  Tie ${tie}`)
+  localStorage.removeItem("mernrspscore")
 }
 
 
 function test2()
 {
     console.log("feature test2")
+}
+
+let flag=false;
+let intervalID;
+function autoPlayMode()
+{
+   if(flag==false)
+   {
+    flag=true;
+    intervalID=setInterval(
+        ()=>{
+         let computerGeneratedPlayerMove=generateComputerMove1()
+         playGame(computerGeneratedPlayerMove)   
+        },1000
+    )
+   
+    }
+    else
+    {
+        clearInterval(intervalID)
+    }
 }
