@@ -4,5 +4,5 @@ document.getElementById("box").addEventListener("click", (event) => {
 
   document.getElementById("btn").addEventListener("click", (event) => {
     console.log("Button clicked"); 
-    event.stopImmediatePropagation()
-  });
+   // event.stopImmediatePropagation()
+  },true);
