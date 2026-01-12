@@ -20,7 +20,6 @@ let myPromise=new Promise(
     }
 )
 
-
 myPromise.then(
      function(fulfilled)
      {
