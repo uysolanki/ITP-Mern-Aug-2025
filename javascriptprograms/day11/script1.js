@@ -9,9 +9,10 @@ buttonElement.addEventListener('click', ()=>{
     .catch(error => {     // result === value passed to resolve()
         spanElement.innerHTML=error
     })
-
 }
 )
+
+spanElement.innerHTML="Whaat Pahil pan PMT madhe Jaeel"
 
 function voterList()
 {
