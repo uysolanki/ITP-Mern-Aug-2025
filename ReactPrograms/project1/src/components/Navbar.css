@@ -1,0 +1,16 @@
+.navbar{
+    display: flex;
+    justify-content: space-between;
+    list-style: none;
+    cursor: pointer;
+    background-color: yellow;
+    padding: 5px;
+}
+
+/* .navbar li:hover{
+    background-color: orange;
+} */
+
+.navbar li:active{
+    background-color: pink;
+}
