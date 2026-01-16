@@ -34,7 +34,12 @@ const Counter = () => {
   return (
     <div>
      
-      <MyButton text="Increment" handleClick={increment}/>
+      <MyButton text="Increment" handleClick={increment}>
+        <div>
+        <h1>This is children prop</h1>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi, maiores!</p>
+        </div>
+      </MyButton>
       <MyButton text="Increment By 2" handleClick={incrementBy2}/>
       <MyButton text="Decrement" handleClick={decrement}/>
       <MyButton text="Decrement By 2" handleClick={decrementBy2}/>

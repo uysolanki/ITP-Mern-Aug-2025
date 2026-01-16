@@ -1,11 +1,11 @@
 import React from 'react'
 import './MyButton.css'
-// const MyButton = (props) => {
-const MyButton = ({handleClick,text}) => {
+const MyButton = (props) => {
+//const MyButton = ({handleClick,text,children}) => {
   return (
     <>
-    {/* <button onClick={props.handleClick}>{props.text}</button> */}
-    <button onClick={handleClick}>{text}</button>
+    <button onClick={props.handleClick}>{props.children}</button>  
+    {/* <button onClick={handleClick}>{children}</button> */}
     </>
   )
 }
