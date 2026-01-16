@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import './Counter.css'
 import MyButton from './MyButton'
-
+import { MdOutlineMarkEmailRead } from "react-icons/md";
 
 const Counter = () => {
   let a=10
@@ -43,6 +43,7 @@ const Counter = () => {
       <MyButton text="Increment By 2" handleClick={incrementBy2}/>
       <MyButton text="Decrement" handleClick={decrement}/>
       <MyButton text="Decrement By 2" handleClick={decrementBy2}/>
+      <MyButton icon={<MdOutlineMarkEmailRead />}/>
 
       {/* <button onClick={increment}>Increment</button>
       <button onClick={incrementBy2}>Increment By 2</button>

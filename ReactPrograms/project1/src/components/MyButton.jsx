@@ -4,8 +4,9 @@ const MyButton = (props) => {
 //const MyButton = ({handleClick,text,children}) => {
   return (
     <>
-    <button onClick={props.handleClick}>{props.children}</button>  
+    {/* <button onClick={props.handleClick}>{props.children}</button>   */}
     {/* <button onClick={handleClick}>{children}</button> */}
+    <button>{props.icon}</button> 
     </>
   )
 }
