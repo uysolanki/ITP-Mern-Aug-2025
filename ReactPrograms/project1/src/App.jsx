@@ -1,11 +1,9 @@
-import Counter from './components/Counter'
-import Navbar2 from './components/Navbar2'
+import Test from './components/Test'
 
 const App = () => {
   return (
     <div>
-      <Navbar2/>
-      <Counter/>
+      <Test/>
     </div>
   )
 }
