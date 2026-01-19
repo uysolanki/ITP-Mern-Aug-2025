@@ -2,9 +2,10 @@ import React, { useState } from 'react'
 import { products as prods } from '../data/data'
 import './Test.css'
 import CategoryBar from './CategoryBar'
+import SearchBar from './SearchBar'
 const Test = () => {
 
-    const [products, setProducts] = useState(prods)         //6
+    const [products, setProducts] = useState(prods)         //20
     const [buproducts, setBuproducts] = useState(prods)     //20
 
     const productCategories = buproducts.map(
@@ -32,9 +33,21 @@ const Test = () => {
             setProducts(buproducts)
         }
     }
+
+
+    function searchByTitle(event)
+    {
+            let searchText=event.target.value.toLowerCase()
+            //console.log(searchText)
+            const searchedProducts=buproducts.filter(
+                (product)=>product.title.toLowerCase().includes(searchText)
+            )
+            setProducts(searchedProducts)
+    }
     return (
         <>
             <CategoryBar list={allCategories} handleClick={filterByCategory} />
+            <SearchBar handleChange={searchByTitle}/>
             <div className='parent-container'>
                 {
                     products.map(
