@@ -1,9 +1,9 @@
-import Test from './components/Test'
+import RegisterForm1 from './components/RegisterForm1'
 
 const App = () => {
   return (
     <div>
-      <Test/>
+      <RegisterForm1/>
     </div>
   )
 }
