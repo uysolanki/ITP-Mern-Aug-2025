@@ -1,0 +1,7 @@
+.menu-bar{
+    display: flex;
+    list-style: none;
+    justify-content: space-around;
+    align-items: center;
+    cursor: pointer;
+}
