@@ -37,13 +37,31 @@ const RegisterForm1 = () => {
 
 
 
-  function confirmation()
+  async function confirmation()
   {
    const payload={
     username : values.username,
     password : values.password
    }
-
+        try {
+          const response = await fetch("http://localhost:8087/registerUser", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(payload),
+          });
+    
+          if (response.ok) {
+            const data = await response.json();
+            alert("User Registration successful!");
+            console.log(data);
+          } else {
+            alert("Failed to Register User");
+          }
+        } catch (error) {
+          console.error("Error submitting the form", error);
+        }
    
   }
 
