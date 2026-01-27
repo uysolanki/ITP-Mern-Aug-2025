@@ -6,6 +6,7 @@ import RegisterForm from './pages/RegisterForm'
 import ShowProducts from './pages/ShowProducts'
 import SinglePage from './pages/SinglePage'
 import ShowProducts1 from './pages/ShowProducts1'
+import SinglePage1 from './pages/SinglePage1'
 
 const App = () => {
   return (
@@ -17,7 +18,7 @@ const App = () => {
             <Route path="/login"  element={<Login/>}/>
             <Route path="/register"  element={<RegisterForm/>}/>
             <Route path="/shop"  element={<ShowProducts1/>}/>
-            <Route path="/single/:prodid"  element={<SinglePage/>}/>
+            <Route path="/single/:prodid"  element={<SinglePage1/>}/>
         </Routes>
     </Router>
     </>

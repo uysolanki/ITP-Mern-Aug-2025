@@ -3,6 +3,7 @@ import './SinglePage.css'
 import { useParams } from 'react-router-dom'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
+import BreadCrumbs from '../components/BreadCrumbs'
 
 const SinglePage = () => {
     const { prodid } = useParams()
@@ -27,6 +28,7 @@ const SinglePage = () => {
 
     return (
         <>
+            <BreadCrumbs product={product}/>
             <div className="card" style={{ 'width': '18rem' }}>
                <img className="card-img-top" src={product.image} alt="Card image cap" />
                 <div className="card-body">

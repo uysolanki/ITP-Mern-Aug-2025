@@ -65,6 +65,7 @@ const ShowProducts1 = () => {
         <>
             <CategoryBar list={allCategories} handleClick={filterByCategory} />
             <SearchBar handleChange={searchByTitle} />
+            
             <div className='parent-container'>
                 {
                     products.map(
@@ -86,3 +87,5 @@ const ShowProducts1 = () => {
 }
 
 export default ShowProducts1
+
+
