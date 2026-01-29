@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useCallback, useEffect, useMemo, useState } from 'react'
 import CategoryBar from '../components/CategoryBar'
 import SearchBar from '../components/SearchBar'
 import './ShowProducts.css'
@@ -26,32 +26,51 @@ const ShowProducts1 = () => {
             console.log(error)
         }
     }
-    const productCategories = buproducts.map(
-        (product) => (product.category)
-    )
+    // const productCategories = buproducts.map(
+    //     (product) => (product.category)
+    // )
 
-    console.log(productCategories)
+    // console.log(productCategories)
 
-    const distinctCategories = new Set(productCategories)
-    console.log(distinctCategories)
+    // const distinctCategories = new Set(productCategories)
+    // console.log(distinctCategories)
 
-    const allCategories = [...distinctCategories, "All"]
-    console.log(allCategories)
+    // const allCategories = [...distinctCategories, "All"]
+    // console.log(allCategories)
 
-    function filterByCategory(selectedCategory) {
-        // alert(selectedCategory)
-        if (selectedCategory != 'All') {
-            const filteredProductsByCategory = buproducts.filter(
-                (product) => (product.category === selectedCategory)
-            )
+    const allCategories = useMemo(() => {
+        const categories = buproducts.map(p => p.category)
+        const uniqueCategories = new Set(categories)
+        return [...uniqueCategories, "All"]
+    }, [buproducts])
 
-            setProducts(filteredProductsByCategory)
-        }
-        else {
-            setProducts(buproducts)
-        }
-    }
 
+    // function filterByCategory(selectedCategory) {
+    //     // alert(selectedCategory)
+    //     if (selectedCategory != 'All') {
+    //         const filteredProductsByCategory = buproducts.filter(
+    //             (product) => (product.category === selectedCategory)
+    //         )
+
+    //         setProducts(filteredProductsByCategory)
+    //     }
+    //     else {
+    //         setProducts(buproducts)
+    //     }
+    // }    //['mens clothing, womens clothing, electronics, jewelry, All, stationery]
+    //         //filterByCategory('Electronic')  //123
+    //         //filterByCategory('Electronic')  //456
+    //         //filterByCategory('Jewrlty')     //789
+
+    const filterByCategory = useCallback(
+        (selectedCategory) => {
+            if (selectedCategory === "All") {
+                setProducts(buproducts)
+            }
+            else {
+                setProducts(buproducts.filter(p => p.category === selectedCategory))
+            }
+        }, [buproducts])
 
     function searchByTitle(event) {
         let searchText = event.target.value.toLowerCase()
@@ -65,7 +84,7 @@ const ShowProducts1 = () => {
         <>
             <CategoryBar list={allCategories} handleClick={filterByCategory} />
             <SearchBar handleChange={searchByTitle} />
-            
+
             <div className='parent-container'>
                 {
                     products.map(
