@@ -9,9 +9,9 @@ const BreadCrumbs = ({product}) => {
  <img className="arrow-img" src={arrow}></img>
  <Link to="/shop"> SHOPPING </Link>
  <img className="arrow-img" src={arrow}></img>
- {product.category}
+ {product?.category}
  <img className="arrow-img" src={arrow}></img>
- {product.title}
+ {product?.title}
    </>
   )
 }

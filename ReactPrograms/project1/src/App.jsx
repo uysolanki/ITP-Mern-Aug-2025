@@ -8,6 +8,8 @@ import SinglePage from './pages/SinglePage'
 import ShowProducts1 from './pages/ShowProducts1'
 import SinglePage1 from './pages/SinglePage1'
 import Demo from './components/Demo'
+import ShowProducts2 from './pages/ShowProducts2'
+import SinglePage2 from './pages/SinglePage2'
 
 const App = () => {
   return (
@@ -18,8 +20,8 @@ const App = () => {
             <Route path="/"  element={<Homepage/>}/>
             <Route path="/login"  element={<Demo/>}/>
             <Route path="/register"  element={<RegisterForm/>}/>
-            <Route path="/shop"  element={<ShowProducts1/>}/>
-            <Route path="/single/:prodid"  element={<SinglePage1/>}/>
+            <Route path="/shop"  element={<ShowProducts2/>}/>
+            <Route path="/single/:prodid"  element={<SinglePage2/>}/>
         </Routes>
     </Router>
     </>
