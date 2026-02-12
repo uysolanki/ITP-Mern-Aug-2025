@@ -15,6 +15,7 @@ const SinglePage2 = () => {
     console.log(prodid)
 
     const data=useContext(ProductContext)
+    const {addToCart}=useContext(ProductContext)
     console.log(data.products)
     const [product, setProduct] = useState()
 
@@ -96,7 +97,7 @@ const SinglePage2 = () => {
                     </div>
 
 
-                    <button>
+                    <button onClick={()=>addToCart(product.id)}>
                         ADD TO CART
                     </button>
 

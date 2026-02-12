@@ -1,6 +1,8 @@
 import { lazy, Suspense } from 'react'
 import { Route, BrowserRouter as Router, Routes } from 'react-router-dom'
 import Menubar2 from './components/Menubar2'
+import ShowCart from './pages/ShowCart'
+import Menubar1 from './components/Menubar1'
 
 const App = () => {
   const Homepage = lazy(() => import('./pages/Homepage'))
@@ -13,7 +15,7 @@ const App = () => {
   return (
     <>
     <Router>
-        <Menubar2/>
+        <Menubar1/>
         <Suspense fallback={<h1>Loading page...</h1>}>
         <Routes>
             <Route path="/"  element={<Homepage/>}/>
@@ -21,6 +23,7 @@ const App = () => {
             <Route path="/register"  element={<RegisterForm/>}/>
             <Route path="/shop"  element={<ShowProducts2/>}/>
             <Route path="/single/:prodid"  element={<SinglePage2/>}/>
+            <Route path="/cart"  element={<ShowCart/>}/>
         </Routes>
         </Suspense>
     </Router>

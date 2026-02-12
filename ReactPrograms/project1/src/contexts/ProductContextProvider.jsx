@@ -5,8 +5,14 @@ import axios from 'axios'
 
 function ProductContextProvider({children}) 
 {
-    const [products, setProducts] = useState([])         
+    function getDefaultCart()
+    {
+        return JSON.parse(localStorage.getItem("mycart")) || {}
+    }
+    const [products, setProducts] = useState([])  
+    const [cartItems,setCartItems] = useState(getDefaultCart())  
 
+    console.log(cartItems)
     useEffect(
         () => {
             loadDataFromAPI()
@@ -23,7 +29,43 @@ function ProductContextProvider({children})
         }
     }
 
-    let sharedData = {products};          
+    function addToCart(prodId)
+    {
+       setCartItems(prev => ({
+            ...prev,
+            [prodId]: (prev[prodId] || 0) + 1
+        }));
+    }
+
+    function removeFromCart(prodId)
+    {
+        setCartItems(prev => {
+            const newCart = { ...prev };
+            if (newCart[prodId] > 0) {
+                newCart[prodId] -= 1;
+            }
+            return newCart;
+        });
+    }
+
+    function totalCartItems()
+    {
+        let totalItems = 0;
+        for (const item in cartItems) {
+            if (cartItems[item] > 0) {
+                totalItems += cartItems[item];
+            }
+        }
+        return totalItems;
+    }
+
+    useEffect(() => {
+        if (Object.keys(cartItems).length > 0) {
+            localStorage.setItem("mycart", JSON.stringify(cartItems));
+        }
+    }, [cartItems]);
+    
+    let sharedData = {products,addToCart,removeFromCart,totalCartItems};          
   return (
    
    <ProductContext.Provider value={sharedData}>		

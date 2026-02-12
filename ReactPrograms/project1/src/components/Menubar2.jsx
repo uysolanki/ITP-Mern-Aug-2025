@@ -17,7 +17,6 @@ const Menubar2 = () => {
         (item,index)=>(<li key={index} onClick={()=>handleClick(item.path)}>    {item.caption}</li>)
       )}   
     </ul>
-
    </>
   )
 }
